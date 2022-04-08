@@ -1,7 +1,7 @@
 const { artifacts,network } = require('hardhat');
 const { writeAbiAddr } = require('./artifact_saver.js')
 
-const myToken = require(`../deployments/dev/${network.name}-MyToken.json`);
+//const myToken = require(`../deployments/dev/${network.name}-MyToken.json`);
 const uniswapV2Router = require(`../deployments/dev/${network.name}-UniswapV2Router02.json`);
 const wETH9 = require(`../deployments/dev/${network.name}-WETH9.json`);
 
