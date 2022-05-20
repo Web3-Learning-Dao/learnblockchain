@@ -3,11 +3,11 @@ const fs = require('fs');
 const { keccak256 } = require("@ethersproject/keccak256");
 const contractFile = require('./compile');
 const { toUtf8Bytes } =  require("@ethersproject/strings");
-
 require('dotenv').config();
+
 const privatekey = process.env.PRIVATE_KEY;
 const apiKey = process.env.API_KEY;
-let gas_limit = "0x100000"
+let gas_limit = "0x100000";
 
 /*
    -- Define Provider & Variables --
@@ -48,11 +48,6 @@ console.log(`Attempting to deploy from account: ${wallet.address}`);
 
 //链接钱包到网络
 let walletSigner = wallet.connect(provider)
-/*
-   -- Deploy Contract --
-*/
-// 创建合约工厂
-const deployContractIns = new ethers.ContractFactory(abi, bytecode, wallet);
 
 //查询账号ETH 余额
 async function query_ETH_balance(account) 
@@ -118,8 +113,11 @@ function send_token(
 
 const Trans = async () => {
   console.log('===============================1. Deploy Contract');
-
-
+  /*
+    -- Deploy Contract --
+  */
+  // 创建合约工厂
+  const deployContractIns = new ethers.ContractFactory(abi, bytecode, wallet);
 
   // Send Tx (Initial Value set to 5) and Wait for Receipt
   const deployedContract = await deployContractIns.deploy(
@@ -134,7 +132,7 @@ const Trans = async () => {
    */
   console.log();
   console.log(
-    '===============================2.connect signer and provider'
+    '===============================2.connect contract for signer and provider'
   );
   const transactionContract = new ethers.Contract(
     deployedContract.address,
@@ -174,21 +172,22 @@ console.log(
    -- Listen to Events --
    */
   console.log();
-  console.log('===============================4. Listen To Events');
+  console.log('===============================5. Listen ETH To Events');
 
   // Listen to event once
-  providerContract.once('Transfer', (from, to, value) => {
+  provider.once('Transfer', (from, to, value) => {
     console.log(
       `I am a once Event Listener, I have got an event Transfer, from: ${from}   to: ${to}   value: ${value}`
     );
   });
 
   // Listen to events continuously
-  providerContract.on('Transfer', (from, to, value) => {
+  provider.on('Transfer', (from, to, value) => {
     console.log(
       `I am a longstanding Event Listener, I have got an event Transfer, from: ${from}   to: ${to}   value: ${value}`
     );
   });
+};
 
 //   // Listen to events with filter
 //   let topic = ethers.utils.id('Transfer(address,address,uint256)');
