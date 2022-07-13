@@ -1,4 +1,4 @@
-## chainlink OKEX专场 学习记录
+## chainlink 集训营学习记录
 
 ### Week 1 合约编写和部署
 
