@@ -8,13 +8,13 @@ let whitelistAddresses = [
     '0x0a290c8cE7C35c40F4F94070a9Ed592fC85c62B9',
     '0x43Be076d3Cd709a38D2f83Cd032297a194196517',
     '0xC7FaB03eecA24CcaB940932559C5565a4cE9cFFb',
-    '0xE4336D25e9Ca0703b574a6fd1b342A4d0327bcfa',
-    '0xeDcB8a28161f966C5863b8291E80dDFD1eB78491',
-    '0x77cbd0fa30F83a249da282e9fE90A86d7936FdE7',
-    '0xc39F9406284CcAeB426D0039a3F6ADe14573BaFe',
-    '0x16Beb6b55F145E4269279B82c040B7435f1088Ee',
-    '0x900b2909127Dff529f8b4DB3d83b957E6aE964c2',
-    '0xeA2A799793cE3D2eC6BcD066563f385F25401e95',
+    // '0xE4336D25e9Ca0703b574a6fd1b342A4d0327bcfa',
+    // '0xeDcB8a28161f966C5863b8291E80dDFD1eB78491',
+    // '0x77cbd0fa30F83a249da282e9fE90A86d7936FdE7',
+    // '0xc39F9406284CcAeB426D0039a3F6ADe14573BaFe',
+    // '0x16Beb6b55F145E4269279B82c040B7435f1088Ee',
+    // '0x900b2909127Dff529f8b4DB3d83b957E6aE964c2',
+    // '0xeA2A799793cE3D2eC6BcD066563f385F25401e95',
 ];
 let leafNodes = whitelistAddresses.map(address => keccak256(address));
 let tree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
@@ -52,27 +52,28 @@ console.log('Tree: ', tree.toString());
 
 //第二步，需要生成参与 mint 地址的 Merkle 证明
 let leaf = keccak256('0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33');
+console.log(`leaf:`,leaf);
 let proof = tree.getHexProof(leaf);
 console.log('Proof of 0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33: ', proof);
 
-//同时我们将生成一个假的证明：
-// another proof, for example
+// //同时我们将生成一个假的证明：
+// // another proof, for example
 
-let anotherWhitelistAddresses = [
-    '0x169841AA3024cfa570024Eb7Dd6Bf5f774092088',
-    '0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33',
-    '0x0a290c8cE7C35c40F4F94070a9Ed592fC85c62B9',
-    '0x43Be076d3Cd709a38D2f83Cd032297a194196517',
-];
-let anotherLeafNodes = anotherWhitelistAddresses.map(address => keccak256(address));
-let badTree = new MerkleTree(anotherLeafNodes, keccak256, { sortPairs: true });
+// let anotherWhitelistAddresses = [
+//     '0x169841AA3024cfa570024Eb7Dd6Bf5f774092088',
+//     '0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33',
+//     '0x0a290c8cE7C35c40F4F94070a9Ed592fC85c62B9',
+//     '0x43Be076d3Cd709a38D2f83Cd032297a194196517',
+// ];
+// let anotherLeafNodes = anotherWhitelistAddresses.map(address => keccak256(address));
+// let badTree = new MerkleTree(anotherLeafNodes, keccak256, { sortPairs: true });
 
-let badLeaf = keccak256('0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33');
-let badProof = badTree.getHexProof(badLeaf);
-console.log('Bad proof of 0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33: ', badProof);
+// let badLeaf = keccak256('0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33');
+// let badProof = badTree.getHexProof(badLeaf);
+// console.log('Bad proof of 0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33: ', badProof);
 
-// Bad proof of 0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33:  [
-//     '0x1575cc1dded49f942913392f94716824d29b8fa45876b2db6295d16a606533a4',
-//     '0x6c42c6099e51e28eef8f19f71765bb42c571d5c7177996f177606138f65c0c2b'
-//   ]
+// // Bad proof of 0xc12ae5Ba30Da6eB11978939379D383beb5Df9b33:  [
+// //     '0x1575cc1dded49f942913392f94716824d29b8fa45876b2db6295d16a606533a4',
+// //     '0x6c42c6099e51e28eef8f19f71765bb42c571d5c7177996f177606138f65c0c2b'
+// //   ]
 
