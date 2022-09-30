@@ -14,12 +14,27 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const Greeter = await hre.ethers.getContractFactory("ScoreList");
+  const greeter = await Greeter.deploy();
 
   await greeter.deployed();
 
   console.log("Greeter deployed to:", greeter.address);
+
+  console.log("Sleeping.....");
+  // Wait for etherscan to notice that the contract has been deployed
+  await sleep(10000);
+
+ // Verify the contract after deploying
+  await hre.run("verify:verify", {
+    address: greeter.address,
+    constructorArguments: [],
+  });
+
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 // We recommend this pattern to be able to use async/await everywhere
