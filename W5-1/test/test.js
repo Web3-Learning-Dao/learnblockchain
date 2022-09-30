@@ -1,4 +1,6 @@
-const { expect } = require("chai");
+import { ethers } from "hardhat";
+import { Signer } from "ethers";
+import { expect } from "chai";
 
 let owner;
 let addr1;

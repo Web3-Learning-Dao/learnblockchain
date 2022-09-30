@@ -1,6 +1,9 @@
-const { artifacts,network } = require('hardhat');
-const { writeAbiAddr } = require('./artifact_saver.js')
+import { run, ethers } from "hardhat";
+import { artifacts,network } from "hardhat";
+import { writeAbiAddr } from './artifact_saver';
+
 async function main() {
+  await run("compile");
     const [deployer] = await ethers.getSigners();
 
     console.log(
