@@ -1,4 +1,71 @@
-## 登链社区集训营学习记录
+<div align="center">
+  <img src="./Web3LearningDao-logo.png" style="margin: 0 auto 40px;" width="380" />
+  <!-- <h1>Dapp Learning</h1> -->
+  <h4 align="center">
+    WEB3 学习教程
+  </h4>
+  <p>分享WEB3 DAPP 开发过程中的业务教程</p>
+  <br />
+    <p>
+    <a href=""><img alt="Wechat group helper" src="https://img.shields.io/static/v1?&label=&logo=wechat&message=%E5%BE%AE%E4%BF%A1%E4%BA%A4%E6%B5%81%E7%BE%A4&color=brightgreen&logoColor=white"></a>
+    <a href="https://twitter.com/Tang19010536"><img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/Tang19010536?style=social"></a>、
+    <a href="https://t.me/tg0xTang"><img src="https://img.shields.io/badge/telegram-blue?color=blue&logo=telegram&logoColor=white" alt="Telegram group" /></a>
+  </p>
+</div>
+
+## 序 - Preface
+
+Web3LearningDAO适合有一定`solidity`和`node.js`基础的开发者分享和学习 WEB3 DAPP 业务开发，其中涉及到 **DeFi, NFT, DAO, CRYPTO，多签**等项目中常见的业务以及解决方案。
+
+社区初衷是给国内开发者们一个可以交流,学习和分享的平台此项目仍在更新中，适合各阶段的开发者加入，欢迎加入组织，提 PR 来创建更多的教程项目或完善已有的教程项目🤗。
+
+**基础知识预备**
+<details>
+<summary>技术栈: </summary>
+
+- `ethers.js /web3.js(hardhat)`
+- `solidity (evm链)`
+- `move (Aptos,sui新公链)`
+- `C/C++` (可选)
+- `Java` （可选）
+- `Rust` （可选）
+- `Go` （可选）
+
+</details>
+
+- 对于solidity基础学习推荐[WTF-Solidity](https://github.com/AmazingAng/WTF-Solidity)教程。[Solidity by Example]( https://solidity-by-example.org/)官方示例。
+- 对于ethers.js 学习推荐[WTF-Ethers](https://github.com/WTFAcademy/WTF-Ethers)教程。
+
+
+**开发工具**
+<details>
+<summary>开发工具(点击展示): </summary>
+
+- Cookbook (free smart contracts): <https://www.cookbook.dev>
+- 以太坊开发工具汇总: <https://learnblockchain.cn/article/2006>
+- metamask（浏览器钱包插件）: <https://www.jianshu.com/p/b5b2c05e9090>
+- Hardhat“安全帽”是针对专业人员的以太坊开发环境: <https://hardhat.org/>
+- Waffle 智能合约最先进的测试框架之一: <https://getwaffle.io/>
+- Foundry 用 Rust 编写的用于以太坊应用程序开发的极快、可移植和模块化的工具包: <https://book.getfoundry.sh/>
+- scaffold-eth (ETH + Hardhat + React)：构建由智能合约驱动的去中心化应用程序所需的常用框架 <https://github.com/scaffold-eth/scaffold-eth>
+- infura（节点服务）: <https://infura.io/>
+- alchemy（节点服务）: <https://dashboard.alchemyapi.io/>
+- 以太节点服务列表：<https://ethereumnodes.com/>
+- 测试均连接kovan测试网，kovan测试ETH申请: <https://faucet.kovan.network>,也可自由使用其他测试网络。
+- 以太坊区块链浏览器: <https://kovan.etherscan.io>
+- JSON-PRC接口: <https://eth.wiki/json-rpc/API>
+- tenderly合约验证: <https://dashboard.tenderly.co/explorer>
+- ethtx交易分析工具: <https://ethtx.info>
+- remix本地环境: <https://zhuanlan.zhihu.com/p/38309494>
+- remix 在线IDE <https://remix.ethereum.org/>  remix 中文镜像 <http://remix.zhiguxingtu.com/>
+- 代码美化工具: <https://www.cnblogs.com/kuronekonano/p/11794302.html>
+- 以太兼容链网络列表(可方便添加到metamask)：<https://chainlist.org/>
+- Layer2生态项目发展状态跟踪：<https://l2beat.com/>
+- 以太虚拟机指令手册：<https://ethervm.io/>
+
+</details>
+
+## 登链社区集训营学习DEMO
 
 ### Week 1 合约编写和部署
 
@@ -95,7 +162,7 @@ Rinkeby合约地址：0x21AeA93F9C95Db7b65584877A2023522590A8cAD
    * 治理Gov合约作为管理员，并且实现投票逻辑
    * 通过发起提案从Treasury获取资⾦，提案投票通过可以提取
   
-## 合约业务学习记录
+## 合约业务学习DEMO
 
 ### Auction 
 
