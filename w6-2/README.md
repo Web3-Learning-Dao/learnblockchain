@@ -1,5 +1,5 @@
 # Basic Sample Hardhat Project
-#### w6_2
+#### W6_2
 
 * 实现⼀个通过 DAO 管理资⾦的Treasury：
    * 管理员可以从Treasury合约中提取资⾦withdraw（）

@@ -1,4 +1,4 @@
-## chainlink 集训营学习记录
+## 登链社区集训营学习记录
 
 ### Week 1 合约编写和部署
 
@@ -92,6 +92,59 @@ Rinkeby合约地址：0x21AeA93F9C95Db7b65584877A2023522590A8cAD
 
 * 实现⼀个通过 DAO 管理资⾦的Treasury：
    * 管理员可以从Treasury合约中提取资⾦withdraw（）
-   * 治理Gov合约作为管理员
-   * 通过发起提案从Treasury合约资⾦
+   * 治理Gov合约作为管理员，并且实现投票逻辑
+   * 通过发起提案从Treasury获取资⾦，提案投票通过可以提取
   
+## 合约业务学习记录
+
+### Auction 
+
+* 实现英式拍卖合约业务
+* 实现荷兰拍卖合约业务
+* 实现众筹合约业务
+
+### Multi-Sig-Wallet
+* 多签钱包合约业务
+
+### ethersJS-deploy-test
+* ethjs 接口调用:
+    * 钱包交互
+    * 提供者交互
+    * 合约交互
+
+### whitelist-Verifying
+* 实现白名单验证三种方式
+    * 白名单信息写进合约
+    * Merkel tree 验证 
+    * 链下 off-chain 发签章
+
+### contract-security
+* 合约安全相关案例
+   1. Call PrivateData 读取私有变量中的数据
+      * 在链上所有的数据都是可以读取的，包括private私有变量，可以使用ethers.js 中的getStorageAt来读取指定插槽数据。
+   2. Delegatecall Attack 委托调用攻击
+      * Delegatecall委托调用时的堆栈是当前合约的上下文，所以如果不注意调用合约和目标合约之间的插槽冲突的话，很容易被修改插槽中的数据，比如修改owner，进而被攻击。
+   3. Random Attack    随机数攻击
+      * 在链上要是没有绝对随机数的，用任何链上数据计算得到的随机数都是可以被破解和计算出来的。如果一定要使用随机数可以使用预言机来获得，比如chainlink vrf
+   4. ReEntrancy Attack    重入攻击
+      * 重入攻击是比较老的一种攻击，以为在合约接受eth转账时候会回调recevie 或者fallback函数，当转账合约用send或者transfer或者call实现转账功能时，接受合约都会直接回调到fallback中，并且在fallback中进行递归调用转账合约的转账接口，就实现了重入，可以无限提币。比较常用的解决方案是使用openzeppelin的ReentrancyGuard.sol来对接口进行nonReentrant()修饰，来避免重入，并且在写代码时候也注意在转账之前先修改数据状态。
+
+### FlashLoans
+   * AAVE 闪电贷业务，实现闪电贷流程。
+
+### gasOptimizations
+   * 记录Solidity 合约gas优化的一些方案
+
+### slotHank
+   * 对合约插槽进行代码分析
+
+### upgradeProxy
+   * 使用openzeppelin uups和透明代理进行合约升级demo
+   * 实现并且部署 openzeppelin 两种升级模式源码，编写测试脚本进行部署测试
+
+### Verifying-Signature
+* 验证签名合约
+* EIP-712签名协议支持
+
+
+
